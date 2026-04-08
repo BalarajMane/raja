@@ -1,0 +1,89 @@
+mvn archetype:generate 
+Step 2 – Add JUnit Dependency 
+Update pom.xml: 
+<dependencies> 
+    <dependency> 
+        <groupId>org.junit.jupiter</groupId> 
+        <artifactId>junit-jupiter</artifactId> 
+        <version>5.10.0</version> 
+        <scope>test</scope> 
+    </dependency> 
+</dependencies> 
+ 
+<build> 
+    <plugins> 
+        <plugin> 
+            <groupId>org.apache.maven.plugins</groupId> 
+            <artifactId>maven-surefire-plugin</artifactId> 
+            <version>3.1.2</version> 
+        </plugin> 
+    </plugins> 
+</build> 
+Explanation: 
+• JUnit executes tests. 
+• Surefire generates XML reports for Jenkins. 
+ 
+Step 3 – Create Java Class 
+src/main/java/com/devops/lab/Calculator.java 
+package com.devops.lab; 
+ 
+public class Calculator { 
+ 
+    public int add(int a, int b) { 
+        return a + b; 
+    } 
+} 
+ 
+Step 4 – Create JUnit Test 
+src/test/java/com/devops/lab/CalculatorTest.java 
+package com.devops.lab; 
+import org.junit.jupiter.api.Test; 
+import static org.junit.jupiter.api.Assertions.*; 
+class CalculatorTest { 
+Calculator calculator = new Calculator(); 
+@Test 
+void testAdd() { 
+assertEquals(10, calculator.add(5,5)); 
+}
+}
+Step 7.1 – Install Required Plugins 
+Go to: 
+Manage Jenkins → Plugins 
+Ensure installed: 
+• Git Plugin 
+• Maven Integration Plugin 
+• JUnit Plugin 
+• Pipeline Plugin 
+Restart Jenkins if required.
+Step 9 – Create Jenkinsfile 
+Add this file in project root: 
+pipeline { 
+    agent any 
+ 
+    tools { 
+        jdk 'JDK17' 
+        maven 'Maven3' 
+    } 
+ 
+    stages { 
+ 
+        stage('Checkout') { 
+            steps { 
+                git '<repo-url>' 
+            } 
+        } 
+ 
+        stage('Build & Test') { 
+            steps { 
+                sh 'mvn clean test' 
+            } 
+        } 
+    } 
+ 
+    post { 
+        always { 
+            junit '**/target/surefire-reports/*.xml' 
+        } 
+    } 
+} 
+Commit and push.
