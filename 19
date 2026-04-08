@@ -1,0 +1,32 @@
+Step 2: Add Pipeline Script
+pipeline {
+    agent any
+    stages {
+        stage('Clone Code') {
+            steps {
+                git 'https://github.com/your-repo/sample-app.git'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t my-app .'
+            }
+        }
+        stage('Run Container') {
+            steps {
+                bat 'docker run -d my-app'
+            }
+        }
+    }
+
+}
+Step 5: Build the Pipeline
+•	Click Build Now 
+•	Monitor in Console Output
+Step 6: Verify Execution
+Check Docker images:
+docker images
+Check running containers:
+docker ps
+
+}
