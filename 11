@@ -1,0 +1,22 @@
+[23/04, 12:21 pm] Charan BNM: package vasavi;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class CalculatorTest {
+
+    Calculator obj = new Calculator();
+
+    @Test
+    public void testAdd() {
+        assertEquals(14, obj.add(10, 5));
+    }
+}
+[23/04, 12:21 pm] Charan BNM: package vasavi;
+
+public class Calculator {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
