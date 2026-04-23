@@ -75,3 +75,16 @@ git tag v2.0
 git push --tags
 
 create release 
+
+
+6.mvn archetype:generate
+2334
+com.bnmit
+sample
+1-SNAPSHOT
+com.bnmit
+Y
+cd sample
+mvn test
+cd target
+java -cp sample-1.0-SNAPSHOT.jarcom.bnmit.App
