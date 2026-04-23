@@ -1,0 +1,77 @@
+1.
+mkdir g
+cd g
+git init
+git config --global user.name "a"
+git config --global user.email a@gmail.com
+git status
+notepad t.txt
+git add .
+git commit -m "IC"
+notepad t.txt
+git add .
+git commit -m "MC"
+git log
+
+2.
+mkdir g
+cd g
+git init
+git config --global user.name "a"
+git config --global user.email a@gmail.com
+git status
+notepad t.txt
+git add .
+git commit -m "IC"
+git branch b
+git checkout b
+notepad t.txt
+git add .
+git commit -m "BC"
+git checkout master
+notepad t.txt
+git add .
+git commit -m "uC"
+git merge b
+notepad t.txt
+cat t.txt
+git add .
+git commit -m "RC"
+cat t.txt
+
+
+3.
+mkdir g
+cd g
+git init
+git config --global user.name "a"
+git config --global user.email a@gmail.com
+git clone "   " 
+cd 
+git push -u origin main
+
+4.
+mkdir g
+cd g
+git init
+git config --global user.name "a"
+git config --global user.email a@gmail.com
+git clone "   " 
+cd 
+git push -u origin main-----> in github pull request
+git branch b
+modify exixting file echo t.txt
+create new file echo "HI" > t1.txt
+git add .
+git commit -m "IC"
+git push b
+git checkout main
+git pull origin main
+
+
+5.
+git tag v1.0
+git tag v2.0
+git push --tags
+
+create release 
